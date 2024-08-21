@@ -5,6 +5,7 @@ html {
   padding: 0;
   overflow-x: hidden;
 }
+
 body {
   margin: 0;
   padding: 0;
@@ -26,9 +27,14 @@ header {
 
 .navbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between; /* Space between logo, nav, and button */
   align-items: center; /* Align items vertically */
-  padding: 0.625rem 1.25rem; /* 10px 20px in rem units */
+  padding: 1rem 1.25rem; /* 10px 20px in rem units */
+}
+
+.logo {
+  flex-shrink: 0; /* Prevent the logo from shrinking */
+  margin-left: 1rem; /* Space from the left edge */
 }
 
 .logo img {
@@ -39,7 +45,11 @@ header {
 .nav-list {
   list-style: none;
   display: flex;
+  justify-content: center; /* Center the nav links */
+  flex-grow: 1; /* Allow nav-list to take available space */
   gap: 1.25rem; /* 20px */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
 }
 
 .nav-list li {
@@ -59,7 +69,26 @@ header {
 
 /* Hover Effect for Nav Links */
 .nav-list a:hover {
-  box-shadow: inset 0 -2px 0 0 #f00; /* Add border-bottom using box-shadow */
+  box-shadow: inset 0 -2px 0 0 #007bff; /* Add border-bottom using box-shadow */
+}
+
+.contact-button {
+  flex-shrink: 0; /* Prevent the button from shrinking */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.625rem 1.25rem; /* 10px 20px in rem units */
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-right: 1.25rem; /* 20px spacing from the right */
+}
+
+.contact-button:hover {
+  background: linear-gradient(135deg, #007bff, #073d78);
+  box-shadow: 0 8px 20px rgba(0, 119, 255, 0.5);
+  transform: translateY(-3px) scale(1.05);
+  font-weight: 700;
 }
 
 /* Sticky Navbar Styles */
@@ -118,6 +147,7 @@ header {
   opacity: 0;
   transform: translateY(-10px); /* Slide out of view */
 }
+
 .side-dropdown-content {
   opacity: 0;
   height: 0;
@@ -125,33 +155,15 @@ header {
   transition: opacity 0.3s ease, height 0.3s ease; /* Smooth transition */
 }
 
-.contact-button {
-  background: linear-gradient(135deg, #ff5a5a, #ff0000);
-  border-radius: 12px;
-  color: #fff;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  cursor: pointer;
-  box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
-  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.contact-button:hover {
-  background: linear-gradient(135deg, #ff0000, #cc0000);
-  box-shadow: 0 8px 20px rgba(255, 0, 0, 0.5);
-  transform: translateY(-3px) scale(1.05);
-  font-weight: 700;
-}
-
+/* Hamburger Icon */
 .hamburger {
   display: none;
   cursor: pointer;
+  margin: 0 1rem; /* Space from left and right */
 }
 
 .hamburger i {
-  font-size: 1.5rem; /* 24px */
+  font-size: 2rem; /* 32px for larger icon */
   color: #fff;
 }
 
@@ -162,7 +174,7 @@ header {
   right: -100%;
   height: 100%;
   width: 15.625rem; /* 250px */
-  background-color: #333;
+  background-color: rgb(3, 6, 32);
   color: #fff;
   z-index: 2000;
   display: flex;
@@ -184,7 +196,7 @@ header {
 }
 
 .close-icon i {
-  font-size: 1.5rem; /* 24px */
+  font-size: 2rem; /* 32px for larger icon */
   color: #fff;
 }
 
@@ -208,7 +220,7 @@ header {
 .side-dropdown-content {
   display: none;
   padding-left: 1.25rem; /* 20px */
-  background-color: #444;
+  background-color: rgb(3, 6, 32);
 }
 
 .side-dropdown.active .side-dropdown-content {
@@ -220,16 +232,46 @@ header {
   /* 768px */
   .nav-list {
     display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: rgb(3, 6, 32); /* Match body background */
+    position: absolute;
+    top: 100%; /* Position below the navbar */
+    left: 0;
+    width: 100%;
+    padding: 1rem 0; /* Add padding for spacing */
+    z-index: 999; /* Ensure it overlays other content */
+  }
+
+  .nav-list li {
+    width: 100%;
+    margin: 0; /* Remove margin to align items */
+  }
+
+  .nav-list a {
+    padding: 0.75rem 1.25rem; /* Increase padding for better touch target */
+    width: 100%;
+    text-align: left;
   }
 
   .contact-button {
-    display: none;
+    display: none; /* Hide the button in mobile view */
   }
 
   .hamburger {
     display: block;
+    color: white;
+    font-size: 2rem; /* Make the hamburger icon larger */
+    cursor: pointer;
+    margin-left: auto; /* Align the hamburger icon to the right */
+  }
+
+  /* Show the nav-list when the hamburger is clicked */
+  .hamburger.active + .nav-list {
+    display: flex;
   }
 }
+
 /* Hero Section Styles */
 /* Hero Section Styles */
 .hero {
@@ -277,21 +319,20 @@ header {
 }
 
 .hero-button {
-  background: linear-gradient(135deg, #ff5a5a, #ff0000);
-  border-radius: 12px;
-  color: #fff;
+  background-color: #007bff;
+  color: white;
   border: none;
-  padding: 0.8rem 1.5rem;
+  padding: 0.625rem 1.25rem; /* 10px 20px in rem units */
   cursor: pointer;
-  box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
-  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-  font-weight: 600;
-  font-size: 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-left: auto; /* Align to the right */
+  margin-right: 1.25rem; /* 20px spacing from the right */
 }
 
 .hero-button:hover {
-  background: linear-gradient(135deg, #ff0000, #cc0000);
-  box-shadow: 0 8px 20px rgba(255, 0, 0, 0.5);
+  background: linear-gradient(135deg, #007bff, #073d78);
+  box-shadow: 0 8px 20px rgba(0, 119, 255, 0.5);
   transform: translateY(-3px) scale(1.05);
   font-weight: 700;
 }
@@ -733,19 +774,260 @@ header {
   color: #060332;
 }
 /* Testimonials Section */
+/* Swiper Container */
+.testimonials {
+  background-color: #060332;
+}
 .swiper-container {
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
+/* Swiper Wrapper */
+.swiper-wrapper {
+  display: flex;
+}
+
+/* Swiper Slide */
 .swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
-  background: #eee;
+  padding: 20px;
 }
 
+/* Testimonial Card */
+.testimonial-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 300px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 350px; /* Set a minimum height for consistency */
+}
+
+/* Testimonial Image */
+.testimonial-image {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* Blockquote Styling */
+.blockquote {
+  font-style: italic;
+  margin: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 10px; /* Padding at the bottom for spacing */
+  line-height: 50px;
+}
+
+/* Blockquote Footer */
+.blockquote-footer {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Star Rating */
+.star-rating {
+  color: #ffd700; /* Gold color for stars */
+  font-size: 1.2em;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Section Heading */
+.section-heading {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Swiper Pagination */
+.swiper-pagination {
+  bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .swiper-slide {
+    width: 100%;
+  }
+
+  .testimonial-card {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+/* Call to Action Section */
+/* Call to Action Section */
+.cta-section {
+  background-color: #060332; /* Background color (can be your brand color) */
+  padding: 40px 40px; /* Reduced padding to remove extra top space */
+  text-align: center;
+  color: white;
+
+  margin: 0px 0; /* Reduced margin to remove extra spacing */
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* CTA Heading */
+.cta-heading {
+  font-size: 2em;
+  margin-bottom: 10px; /* Reduced margin to remove extra space below heading */
+  font-weight: bold;
+}
+
+/* CTA Text */
+.cta-text {
+  font-size: 1.2em;
+  margin-bottom: 20px; /* Reduced margin to remove extra space below text */
+}
+
+/* CTA Button */
+/* Call to Action Section */
+.cta-section {
+  background-color: #060332; /* Gradient background */
+  padding: 50px 20px; /* Increased padding for a more spacious look */
+  text-align: center;
+  color: white;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Adding decorative elements */
+.cta-section::before,
+.cta-section::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 0;
+  animation: float 6s ease-in-out infinite;
+}
+
+.cta-section::before {
+  top: -50px;
+  left: -50px;
+}
+
+.cta-section::after {
+  bottom: -50px;
+  right: -50px;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+}
+
+/* Container */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* CTA Heading */
+.cta-heading {
+  font-size: 3em;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-transform: uppercase; /* Uppercase for a bold statement */
+  letter-spacing: 2px;
+}
+
+/* CTA Text */
+.cta-text {
+  font-size: 1.3em;
+  margin-bottom: 30px; /* Slightly more space below text */
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* CTA Button */
+.cta-button {
+  background-color: #007bff;
+  color: whitesmoke;
+  padding: 15px 40px;
+  font-size: 1.2em;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+  background-color: #073d78;
+  color: #fff;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* CTA Contact */
+.cta-contact {
+  margin-top: 20px;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Space between the icon, phone number, and text */
+}
+
+.cta-contact i {
+  font-size: 1.5em;
+  color: #007bff;
+}
+
+.phone-number {
+  font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cta-heading {
+    font-size: 2.5em;
+  }
+  .cta-text {
+    font-size: 1.1em;
+  }
+  .cta-button {
+    padding: 12px 30px;
+    font-size: 1em;
+  }
+  .cta-contact {
+    font-size: 1em;
+  }
+}
 /* Footer Styles */
 .site-footer {
   background-color: #060332;
@@ -766,12 +1048,12 @@ header {
 
 .footer-content {
   display: flex;
-  justify-content: space-around; /* Centers the footer columns on the page */
-  gap: 50px; /* Adds space between the columns */
+  flex-wrap: wrap;
+  gap: 50px;
 }
 
 .footer-column {
-  max-width: 300px;
+  max-width: 100%;
   text-align: left; /* Left-aligns the text within each column */
 }
 
@@ -797,7 +1079,6 @@ header {
 .newsletter-form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Aligns the form fields to the left */
 }
 
 .newsletter-form input[type="email"] {
@@ -832,9 +1113,9 @@ header {
 /* Social Media Links */
 .social-media {
   display: flex;
-  justify-content: center; /* Centers the icons horizontally */
-  gap: 20px; /* Adds space between the icons */
-  list-style: none; /* Removes bullets */
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
   padding: 0;
   margin: 0;
 }
@@ -844,36 +1125,35 @@ header {
 }
 
 .social-media a {
-  color: #00aaff; /* Icon color */
+  color: #00aaff;
   text-decoration: none;
-  font-size: 1.5rem; /* Adjusts the size of the icons */
+  font-size: 1.5rem;
 }
 
 .social-media i {
   display: block;
-  width: 40px; /* Width of each icon */
-  height: 40px; /* Height of each icon */
-  line-height: 40px; /* Aligns the icon vertically */
-  text-align: center; /* Centers the icon horizontally */
-  border-radius: 50%; /* Makes the icon circular */
-  background-color: #060332; /* Background color of the icon */
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #060332;
 }
 
 /* Responsive Layout */
 @media (max-width: 768px) {
   .footer-content {
     flex-direction: column;
-    align-items: center; /* Centers the columns vertically on smaller screens */
-    text-align: center; /* Center-aligns text on smaller screens */
+    align-items: center;
+    text-align: center;
   }
 
   .footer-column {
     max-width: 100%;
-    text-align: left; /* Keeps text left-aligned on smaller screens */
   }
 
   .social-media {
-    justify-content: center; /* Keeps the icons centered on smaller screens */
+    justify-content: center;
   }
 }
 
@@ -881,7 +1161,7 @@ header {
 /* Add your CSS styles here */
 #contact {
   padding: 2rem;
-  background-color: #f9f9f9;
+  background-color: #060332;
 }
 
 .contact-container {

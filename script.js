@@ -163,76 +163,107 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
+  // our website feature
 
-  // How It Works Section Animation
-  gsap.from(".how-it-works .step", {
-    opacity: 0,
-    y: 50,
-    duration: 1,
-    stagger: 0.3,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: ".how-it-works",
-      start: "top 80%",
-      toggleActions: "play none none none",
-    },
+  const featureItems = document.querySelectorAll(".features-section .d-flex");
+
+  featureItems.forEach((item, index) => {
+    gsap.fromTo(
+      item,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: item,
+          start: "top 80%", // Adjust this as needed
+          toggleActions: "play none none none",
+        },
+      }
+    );
+  });
+  // how it works
+  const steps = document.querySelectorAll(".how-it-works .step");
+
+  steps.forEach((step, index) => {
+    gsap.fromTo(
+      step,
+      { opacity: 0, x: -50 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.6,
+        ease: "power2.out",
+        delay: index * 0.2, // Stagger the animations slightly
+        scrollTrigger: {
+          trigger: step,
+          start: "top 80%", // Adjust this as needed
+          toggleActions: "play none none none",
+        },
+      }
+    );
   });
 
-  gsap.from(".how-it-works .step img", {
-    opacity: 0,
-    scale: 0.8,
-    duration: 1,
-    stagger: 0.3,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: ".how-it-works",
-      start: "top 80%",
-      toggleActions: "play none none none",
-    },
-  });
-
-  gsap.from(".how-it-works .steps::before", {
-    opacity: 0,
-    duration: 1,
-    scrollTrigger: {
-      trigger: ".how-it-works",
-      start: "top 80%",
-      toggleActions: "play none none none",
-    },
-  });
-
-  // About Us Section Animations
+  // Optional: Animate the image on the right
   gsap.fromTo(
-    ".text-content",
-    { opacity: 0, x: -50 },
+    ".image-card img",
+    { opacity: 0, scale: 0.9 },
     {
       opacity: 1,
-      x: 0,
+      scale: 1,
       duration: 1,
       ease: "power2.out",
       scrollTrigger: {
-        trigger: ".intro-paragraph-section",
-        start: "top 80%",
+        trigger: ".image-card",
+        start: "top 80%", // Adjust this as needed
         toggleActions: "play none none none",
       },
     }
   );
+  // service code
+  const serviceCards = document.querySelectorAll(".service-card");
 
-  gsap.fromTo(
-    ".image-content",
-    { opacity: 0, x: 50 },
-    {
-      opacity: 1,
-      x: 0,
-      duration: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".intro-paragraph-section",
-        start: "top 80%",
-        toggleActions: "play none none none",
-      },
-    }
-  );
+  serviceCards.forEach((card, index) => {
+    gsap.fromTo(
+      card,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        delay: index * 0.2, // Stagger the animations slightly
+        scrollTrigger: {
+          trigger: card,
+          start: "top 80%", // Adjust this as needed
+          toggleActions: "play none none none",
+        },
+      }
+    );
+  });
+  // project guidance
+  const guidanceItems = document.querySelectorAll(".guidance-item");
+
+  guidanceItems.forEach((item, index) => {
+    gsap.fromTo(
+      item,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        delay: index * 0.2, // Stagger the animations slightly
+        scrollTrigger: {
+          trigger: item,
+          start: "top 80%", // Adjust this as needed
+          toggleActions: "play none none none",
+        },
+      }
+    );
+  });
 
   // Intro Section Animation
   gsap.from(".intro-section .h2", {
@@ -270,19 +301,95 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleActions: "play none none none",
     },
   });
-});
-var swiper = new Swiper(".swiper-container", {
-  loop: true,
-  autoplay: {
-    delay: 2000,
-    disableOnInteraction: false,
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
+  // Swiper Initialization
+  const swiper = new Swiper(".swiper-container", {
+    loop: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    slidesPerView: 3, // Default for larger screens
+    spaceBetween: 30, // Default space between slides
+    breakpoints: {
+      768: {
+        // When the screen width is 768px or more
+        slidesPerView: 3, // Display 2 cards
+        spaceBetween: 20, // Adjust space between slides if needed
+      },
+      480: {
+        // When the screen width is 480px or more
+        slidesPerView: 1, // Display 1 card
+        spaceBetween: 10, // Adjust space between slides if needed
+      },
+    },
+  });
+  // cta button
+  const ctaElements = gsap.utils.toArray([
+    ".cta-heading",
+    ".cta-text",
+    ".cta-button",
+    ".cta-contact",
+  ]);
+
+  ctaElements.forEach((element, index) => {
+    gsap.fromTo(
+      element,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        delay: index * 0.3, // Stagger the animations
+        scrollTrigger: {
+          trigger: element,
+          start: "top 80%", // Adjust this as needed
+          toggleActions: "play none none none",
+        },
+      }
+    );
+  });
+  // Animate the form container and its elements
+  gsap.fromTo(
+    ".contact-form",
+    { opacity: 0, y: 50 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".contact-form",
+        start: "top 80%", // Adjust as needed
+        toggleActions: "play none none none",
+      },
+    }
+  );
+
+  // Animate form fields with a stagger effect
+  gsap.fromTo(
+    ".contact-form input, .contact-form textarea",
+    { opacity: 0, y: 20 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power2.out",
+      stagger: 0.2, // Stagger the animation for each field
+      scrollTrigger: {
+        trigger: ".contact-form",
+        start: "top 80%", // Adjust as needed
+        toggleActions: "play none none none",
+      },
+    }
+  );
+  // footer
 });
