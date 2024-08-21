@@ -2,55 +2,79 @@ document.addEventListener("DOMContentLoaded", () => {
   // GSAP and ScrollTrigger Initialization
   gsap.registerPlugin(ScrollTrigger);
 
+  // Hero Section Animation
+  gsap.from(".hero-content", {
+    opacity: 0,
+    y: 50,
+    duration: 1.2,
+    ease: "power3.out",
+    stagger: 0.3,
+    scrollTrigger: {
+      trigger: ".hero",
+      start: "top center",
+      once: true,
+    },
+  });
+
+  gsap.from(".hero-image", {
+    opacity: 0,
+    y: 50,
+    duration: 1.2,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: ".hero",
+      start: "top center",
+      once: true,
+    },
+  });
+
   // Sticky Navbar with background color change on scroll
   gsap.to(".navbar", {
-    backgroundColor: "#000", // Background color when sticky
-    duration: 0.5, // Duration of the color transition
+    backgroundColor: "#000",
+    duration: 0.5,
     scrollTrigger: {
-      trigger: ".hero", // Trigger when the hero section scrolls out of view
-      start: "top top", // Start when the top of the hero section hits the top of the viewport
-      end: "bottom top", // End when the bottom of the hero section hits the top of the viewport
-      scrub: true, // Smoothly animate the background color
+      trigger: ".hero",
+      start: "top top",
+      end: "bottom top",
+      scrub: true,
       onEnter: () => document.querySelector(".navbar").classList.add("sticky"),
       onLeaveBack: () =>
         document.querySelector(".navbar").classList.remove("sticky"),
     },
   });
 
+  // Sidebar animations
   const hamburger = document.querySelector(".hamburger");
   const sideNavbar = document.querySelector(".side-navbar");
   const closeIcon = document.querySelector(".close-icon");
   const dropdowns = document.querySelectorAll(".side-dropdown");
 
-  // Open sidebar with smooth transition (left to right)
   hamburger.addEventListener("click", () => {
     gsap.to(sideNavbar, {
-      x: 0, // Slide in from the left
-      opacity: 1, // Ensure full visibility
-      duration: 0.8, // Increased duration for slower animation
-      ease: "power2.out", // Easing function for smooth animation
+      x: 0,
+      opacity: 1,
+      duration: 0.8,
+      ease: "power2.out",
     });
     sideNavbar.classList.add("active");
-    document.body.style.overflow = "hidden"; // Prevent body scroll when sidebar is open
+    document.body.style.overflow = "hidden";
   });
 
-  // Close sidebar with smooth transition (right to left)
   closeIcon.addEventListener("click", () => {
     gsap.to(sideNavbar, {
-      x: "100%", // Slide out to the right
-      opacity: 0, // Fade out
-      duration: 0.8, // Increased duration for slower animation
-      ease: "power2.in", // Easing function for smooth animation
+      x: "100%",
+      opacity: 0,
+      duration: 0.8,
+      ease: "power2.in",
       onComplete: () => {
         sideNavbar.classList.remove("active");
       },
     });
-    document.body.style.overflow = "auto"; // Restore body scroll when sidebar is closed
+    document.body.style.overflow = "auto";
   });
 
-  // Handle clicks inside the sidebar to prevent closing it
   sideNavbar.addEventListener("click", (event) => {
-    event.stopPropagation(); // Prevent clicks inside the sidebar from closing it
+    event.stopPropagation();
 
     if (event.target.classList.contains("dropdown-toggle")) {
       const currentDropdown = event.target.closest(".side-dropdown");
@@ -58,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ".side-dropdown-content"
       );
 
-      // Close all dropdowns except the one clicked
       dropdowns.forEach((dropdown) => {
         const content = dropdown.querySelector(".side-dropdown-content");
         if (dropdown !== currentDropdown) {
@@ -66,27 +89,26 @@ document.addEventListener("DOMContentLoaded", () => {
             opacity: 0,
             height: 0,
             duration: 0.3,
-            display: "none", // Ensure content is hidden
+            display: "none",
             ease: "power1.out",
           });
           dropdown.classList.remove("active");
         }
       });
 
-      // Toggle the visibility of the clicked dropdown with animation
       if (currentDropdown.classList.contains("active")) {
         gsap.to(dropdownContent, {
           opacity: 0,
           height: 0,
           duration: 0.3,
-          display: "none", // Ensure content is hidden
+          display: "none",
           ease: "power1.out",
         });
         currentDropdown.classList.remove("active");
       } else {
         gsap.set(dropdownContent, {
-          display: "block", // Ensure content is visible before animating
-          height: "auto", // Auto height to fit content
+          display: "block",
+          height: "auto",
         });
         gsap.fromTo(
           dropdownContent,
@@ -98,26 +120,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Close sidebar when clicking outside of it
   document.addEventListener("click", (event) => {
     if (
       !sideNavbar.contains(event.target) &&
       !hamburger.contains(event.target)
     ) {
       gsap.to(sideNavbar, {
-        x: "100%", // Slide out to the right
-        opacity: 0, // Fade out
-        duration: 0.8, // Increased duration for slower animation
-        ease: "power2.in", // Easing function for smooth animation
+        x: "100%",
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.in",
         onComplete: () => {
           sideNavbar.classList.remove("active");
         },
       });
-      document.body.style.overflow = "auto"; // Restore body scroll
+      document.body.style.overflow = "auto";
     }
   });
 
-  // Add hover effect for Services and Project Guidance dropdowns
   const navDropdowns = document.querySelectorAll(".dropdown");
 
   navDropdowns.forEach((dropdown) => {
@@ -127,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
         opacity: 1,
         height: "auto",
         duration: 0.3,
-        display: "block", // Ensure content is visible
+        display: "block",
         ease: "power1.inOut",
       });
     });
@@ -138,61 +158,50 @@ document.addEventListener("DOMContentLoaded", () => {
         opacity: 0,
         height: 0,
         duration: 0.3,
-        display: "none", // Hide content
+        display: "none",
         ease: "power1.out",
       });
     });
   });
 
-  // Animate feature cards when they come into view
-  gsap.from(".feature-card", {
-    scrollTrigger: {
-      trigger: ".features-section",
-      start: "top 80%",
-      end: "bottom top",
-      scrub: false,
-      once: true,
-    },
+  // How It Works Section Animation
+  gsap.from(".how-it-works .step", {
     opacity: 0,
-    y: 30,
-    scale: 0.95,
+    y: 50,
     duration: 1,
     stagger: 0.3,
-    ease: "power3.out",
-  });
-
-  // Animate feature icons
-  gsap.from(".icon", {
+    ease: "power2.out",
     scrollTrigger: {
-      trigger: ".features-section",
+      trigger: ".how-it-works",
       start: "top 80%",
-      end: "bottom top",
-      scrub: false,
-      once: true,
+      toggleActions: "play none none none",
     },
+  });
+
+  gsap.from(".how-it-works .step img", {
     opacity: 0,
-    x: -50, // Icons slide in from the left
+    scale: 0.8,
     duration: 1,
-    ease: "power3.out",
-    stagger: 0.2,
+    stagger: 0.3,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".how-it-works",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
   });
 
-  // How it works section
-  gsap.utils.toArray(".timeline-item").forEach((item) => {
-    gsap.from(item, {
-      scrollTrigger: {
-        trigger: item,
-        start: "top 80%",
-        toggleActions: "play none none none",
-      },
-      opacity: 0,
-      x: -50,
-      duration: 0.5,
-      stagger: 0.3,
-    });
+  gsap.from(".how-it-works .steps::before", {
+    opacity: 0,
+    duration: 1,
+    scrollTrigger: {
+      trigger: ".how-it-works",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
   });
 
-  // About us section animations
+  // About Us Section Animations
   gsap.fromTo(
     ".text-content",
     { opacity: 0, x: -50 },
@@ -224,68 +233,56 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     }
   );
-  // Initialize Swiper for testimonials with autoplay and custom settings
-  const swiper = new Swiper(".swiper-container", {
-    loop: true,
-    centeredSlides: true,
-    slidesPerView: 3,
-    spaceBetween: 30,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    autoplay: {
-      delay: 1000, // Delay between transitions in ms
-      disableOnInteraction: false,
-    },
-  });
 
-  // GSAP ScrollTrigger for testimonials section heading
-  gsap.from(".testimonials-heading", {
-    opacity: 0,
-    y: -50,
-    duration: 1,
-    scrollTrigger: {
-      trigger: ".testimonials-section",
-      start: "top 75%",
-      toggleActions: "play none none reverse",
-    },
-  });
-
-  // GSAP ScrollTrigger for testimonial slides
-  gsap.from(".swiper-slide", {
+  // Intro Section Animation
+  gsap.from(".intro-section .h2", {
     opacity: 0,
     y: 50,
     duration: 1,
-    stagger: 0.3,
+    ease: "power2.out",
     scrollTrigger: {
-      trigger: ".swiper-container",
-      start: "top 75%",
-      toggleActions: "play none none reverse",
+      trigger: ".intro-section",
+      start: "top 80%",
+      toggleActions: "play none none none",
     },
   });
 
-  // Shuffle testimonials on each page load
-  const testimonials = document.querySelectorAll(".swiper-slide");
-  for (let i = testimonials.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    testimonials[i].parentNode.insertBefore(
-      testimonials[j],
-      testimonials[i].nextSibling
-    );
-  }
-});
-document
-  .querySelector(".newsletter-form")
-  .addEventListener("submit", function (e) {
-    e.preventDefault();
-    const email = e.target.querySelector('input[type="email"]').value;
-
-    // Here you can add your AJAX request or any other handling logic
-    console.log(`Newsletter subscription requested for: ${email}`);
-    alert("Thank you for subscribing!");
+  gsap.from(".intro-section .lead", {
+    opacity: 0,
+    y: 30,
+    duration: 1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".intro-section",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
   });
+
+  gsap.from(".intro-section img", {
+    opacity: 0,
+    scale: 0.8,
+    duration: 1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".intro-section",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+  });
+});
+var swiper = new Swiper(".swiper-container", {
+  loop: true,
+  autoplay: {
+    delay: 2000,
+    disableOnInteraction: false,
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
