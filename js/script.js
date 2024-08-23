@@ -163,6 +163,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
+  // HEOR IMAGE
+
   // our website feature
 
   const featureItems = document.querySelectorAll(".features-section .d-flex");
@@ -319,12 +321,22 @@ document.addEventListener("DOMContentLoaded", () => {
     slidesPerView: 3, // Default for larger screens
     spaceBetween: 30, // Default space between slides
     breakpoints: {
-      768: {
+      992: {
         // When the screen width is 768px or more
         slidesPerView: 3, // Display 2 cards
         spaceBetween: 20, // Adjust space between slides if needed
       },
+      768: {
+        // When the screen width is 768px or more
+        slidesPerView: 2, // Display 2 cards
+        spaceBetween: 20, // Adjust space between slides if needed
+      },
       480: {
+        // When the screen width is 480px or more
+        slidesPerView: 1, // Display 1 card
+        spaceBetween: 10, // Adjust space between slides if needed
+      },
+      0: {
         // When the screen width is 480px or more
         slidesPerView: 1, // Display 1 card
         spaceBetween: 10, // Adjust space between slides if needed

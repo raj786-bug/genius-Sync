@@ -1,0 +1,485 @@
+:root {
+  --background-color: #08183c;
+}
+/* Global Styles */
+html {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  font-size: 16px; /* Base font size for rem calculations */
+  overflow-x: hidden;
+  background-color: var(--background-color);
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  color: #fff;
+  z-index: 1000;
+}
+
+.navbar {
+  background-color: rgba(3, 6, 32, 0.2);
+  display: flex;
+  justify-content: space-between; /* Space between logo, nav, and button */
+  align-items: center; /* Align items vertically */
+  padding: 1rem 1.25rem; /* 10px 20px in rem units */
+}
+
+.logo {
+  flex-shrink: 0; /* Prevent the logo from shrinking */
+  margin-left: 1rem; /* Space from the left edge */
+}
+
+.logo img {
+  height: auto; /* Maintain aspect ratio */
+  max-height: 3rem; /* Adjust height as needed */
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: center; /* Center the nav links */
+  flex-grow: 1; /* Allow nav-list to take available space */
+  gap: 1.25rem; /* 20px */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+.nav-list li {
+  position: relative;
+  box-sizing: border-box; /* Include border in height calculation */
+  padding: 0.5rem 0; /* Add vertical padding for space */
+}
+
+.nav-list a {
+  color: #fff;
+  text-decoration: none;
+  display: block; /* Block display to ensure full clickable area */
+  padding: 0.5rem 1rem; /* Add horizontal padding */
+  transition: box-shadow 0.3s ease; /* Smooth transition for box-shadow */
+  position: relative; /* Needed for box-shadow positioning */
+}
+
+/* Hover Effect for Nav Links */
+.nav-list a:hover {
+  box-shadow: inset 0 -2px 0 0 #007bff; /* Add border-bottom using box-shadow */
+}
+
+.contact-button {
+  flex-shrink: 0; /* Prevent the button from shrinking */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.625rem 1.25rem; /* 10px 20px in rem units */
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-right: 1.25rem; /* 20px spacing from the right */
+}
+
+.contact-button:hover {
+  background: linear-gradient(135deg, #007bff, #073d78);
+  box-shadow: 0 8px 20px rgba(0, 119, 255, 0.5);
+  transform: translateY(-3px) scale(1.05);
+  font-weight: 700;
+}
+
+/* Sticky Navbar Styles */
+.sticky {
+  background-color: #000 !important; /* Background color when sticky */
+}
+
+/* Dropdown Content Styles */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%; /* Adjusted position for dropdown */
+  left: 0;
+  background-color: #fff; /* Changed background color to white */
+  list-style: none;
+  padding: 0.625rem 0; /* 10px 0 */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  z-index: 5; /* Ensure dropdown is above other content */
+  width: max-content; /* Adjust width based on content */
+  margin-top: 0; /* Remove gap between dropdown and nav item */
+}
+
+.dropdown-content li {
+  padding: 0.75rem 1rem; /* Increased padding */
+  border-bottom: 1px solid #eee; /* Light border between items */
+}
+
+.dropdown-content li:last-child {
+  border-bottom: none; /* Remove border from last item */
+}
+
+/* Dropdown Item Styling */
+.dropdown-content a {
+  color: #333; /* Darker text color for better readability */
+  text-decoration: none;
+  display: block; /* Block display for full-width clickable area */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+/* Hover Effect for Dropdown Links */
+.dropdown-content a:hover {
+  background-color: #f7f7f7; /* Light background on hover */
+  padding-left: 1.25rem; /* Indent text on hover */
+}
+
+/* Dropdown Open Animation */
+.dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+  transform: translateY(0); /* Slide into view */
+}
+
+/* Dropdown Closed Animation */
+.dropdown .dropdown-content {
+  opacity: 0;
+  transform: translateY(-10px); /* Slide out of view */
+}
+
+.side-dropdown-content {
+  opacity: 0;
+  height: 0;
+  overflow: hidden; /* Ensure content is hidden when height is 0 */
+  transition: opacity 0.3s ease, height 0.3s ease; /* Smooth transition */
+}
+
+/* Hamburger Icon */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  margin: 0 1rem; /* Space from left and right */
+}
+
+.hamburger i {
+  font-size: 2rem; /* 32px for larger icon */
+  color: #fff;
+}
+
+/* Side Navbar Styles */
+.side-navbar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  height: 100%;
+  width: 15.625rem; /* 250px */
+  background-color: rgb(3, 6, 32);
+  color: #fff;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  transition: right 0.3s ease-in-out;
+  padding-top: 3.75rem; /* 60px */
+}
+
+.side-navbar.active {
+  right: 0;
+}
+
+.close-icon {
+  position: absolute;
+  top: 0.625rem; /* 10px */
+  right: 0.625rem; /* 10px */
+  cursor: pointer;
+}
+
+.close-icon i {
+  font-size: 2rem; /* 32px for larger icon */
+  color: #fff;
+}
+
+.side-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-nav-list li {
+  padding: 0.9375rem 1.25rem; /* 15px 20px */
+  position: relative;
+}
+
+.side-nav-list a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Side Dropdown Styles */
+.side-dropdown-content {
+  display: none;
+  padding-left: 1.25rem; /* 20px */
+  background-color: rgb(3, 6, 32);
+}
+
+.side-dropdown.active .side-dropdown-content {
+  display: block;
+}
+
+/* Responsive Styles */
+@media (max-width: 48rem) {
+  /* 768px */
+  .nav-list {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: rgb(3, 6, 32); /* Match body background */
+    position: absolute;
+    top: 100%; /* Position below the navbar */
+    left: 0;
+    width: 100%;
+    padding: 1rem 0; /* Add padding for spacing */
+    z-index: 999; /* Ensure it overlays other content */
+  }
+
+  .nav-list li {
+    width: 100%;
+    margin: 0; /* Remove margin to align items */
+  }
+
+  .nav-list a {
+    padding: 0.75rem 1.25rem; /* Increase padding for better touch target */
+    width: 100%;
+    text-align: left;
+  }
+
+  .contact-button {
+    display: none; /* Hide the button in mobile view */
+  }
+
+  .hamburger {
+    display: block;
+    color: white;
+    font-size: 2rem; /* Make the hamburger icon larger */
+    cursor: pointer;
+    margin-left: auto; /* Align the hamburger icon to the right */
+  }
+
+  /* Show the nav-list when the hamburger is clicked */
+  .hamburger.active + .nav-list {
+    display: flex;
+  }
+}
+
+/* Hero Section Styles */
+.hero {
+  position: relative;
+  background-image: url("../images/software-developer-6521720_1280.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column; /* Stack content and image vertically */
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 4rem; /* 80px 20px */
+  background-color: rgb(3, 6, 32); /* Fallback color */
+  margin-top: 0;
+  overflow: hidden; /* Ensure the floating blob stays within the hero section */
+  text-align: center; /* Center align the text */
+  color: white; /* Default text color */
+}
+
+/* Overlay for better text readability */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+  z-index: 1; /* Position behind the text */
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column; /* Stack content and image vertically */
+  align-items: center; /* Center align horizontally */
+  max-width: 1200px; /* Adjust to the desired max width */
+  width: 100%; /* Full width of the hero section */
+  position: relative; /* Ensure it sits above the overlay */
+  z-index: 2; /* Ensure container is above the overlay */
+}
+
+.hero-content {
+  max-width: 100%; /* Ensure content takes full width on small screens */
+  margin-bottom: 2rem; /* Space between content and image */
+  padding: 0 1.25rem; /* Add horizontal padding for spacing */
+  box-sizing: border-box; /* Include padding in width calculations */
+}
+
+.hero-content h1 {
+  font-size: 3rem; /* 48px */
+  font-weight: bold; /* Make the heading bold */
+  margin-bottom: 1.25rem; /* 20px */
+  line-height: 3.5rem; /* Adjust line-height for better spacing */
+  color: white; /* Set heading color to white */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Subtle shadow for better visibility */
+}
+
+.hero-content p {
+  font-size: 1.75rem; /* 28px */
+  line-height: 2.5rem;
+  margin-bottom: 1.25rem; /* 20px */
+  color: white; /* Set paragraph color to white */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Subtle shadow for better visibility */
+}
+
+.hero-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.625rem 1.25rem; /* 10px 20px in rem units */
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-left: auto; /* Align to the right */
+  margin-right: 1.25rem; /* 20px spacing from the right */
+}
+
+.hero-button:hover {
+  background: linear-gradient(135deg, #007bff, #073d78);
+  box-shadow: 0 8px 20px rgba(0, 119, 255, 0.5);
+  transform: translateY(-3px) scale(1.05);
+  font-weight: 700;
+}
+
+/* Responsive Styles for Hero Section */
+@media (max-width: 48rem) {
+  /* 768px */
+  .hero {
+    padding: 6rem 1rem; /* Adjust padding for smaller screens */
+  }
+
+  .hero-container {
+    flex-direction: column; /* Stack content and image vertically on small screens */
+    align-items: center; /* Center align horizontally */
+  }
+
+  .hero-content {
+    max-width: 90%; /* Make content wider on small screens */
+    margin-bottom: 2rem; /* Space between content and image */
+    padding: 0 1rem; /* Adjust horizontal padding */
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem; /* Adjust font size for smaller screens */
+    line-height: 3rem;
+  }
+
+  .hero-content p {
+    font-size: 1.5rem; /* Adjust paragraph size for smaller screens */
+    line-height: 2rem;
+  }
+}
+
+/* Container */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+/* our stories */
+.our-stories {
+  background-color: var(--background-color);
+}
+.value-card {
+  background-color: #fff; /* Card background color */
+  border-color: #ddd; /* Card border color */
+}
+
+.value-card h4 {
+  color: #0f1029; /* Heading color for values */
+}
+#mission-statement {
+  background-color: var(--background-color);
+}
+#mission-statement .container {
+  min-height: 100vh; /* Ensure container takes full viewport height */
+}
+
+#mission-statement img {
+  object-fit: cover; /* Cover the container while maintaining aspect ratio */
+  height: 100%; /* Make image height 100% of its parent container */
+}
+#mission-statement h2 {
+  color: #0f1029; /* Dark color for heading */
+}
+
+#mission-statement ul li i {
+  color: #0f1029; /* Icon color */
+}
+
+#mission-statement img {
+  max-height: 100%; /* Ensure image fits within the column */
+  object-fit: cover; /* Cover the space without stretching */
+}
+/* our values */
+#values {
+  background-color: var(--background-color); /* Light background for contrast */
+}
+
+.value-card {
+  background: #ffffff;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for effects */
+}
+
+.value-card:hover {
+  transform: translateY(-10px); /* Slight lift effect */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.icon-container i {
+  font-size: 3rem;
+  color: #007bff; /* Primary color for icons */
+  transition: color 0.3s ease; /* Smooth transition for icon color */
+}
+
+.value-card:hover .icon-container i {
+  color: #0056b3; /* Darker color on hover */
+}
+
+.text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.text-content h4 {
+  margin-top: 1rem;
+  color: #0f1029;
+}
+
+.text-content p {
+  color: #6c757d;
+  margin-bottom: 0;
+}
