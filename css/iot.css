@@ -87,6 +87,7 @@ header {
   border-radius: 4px;
   transition: background-color 0.3s ease, transform 0.3s ease;
   margin-right: 1.25rem; /* 20px spacing from the right */
+  text-decoration: none;
 }
 
 .contact-button:hover {
@@ -293,6 +294,7 @@ header {
   overflow: hidden; /* Ensure the floating blob stays within the hero section */
   text-align: center; /* Center align the text */
   color: white; /* Default text color */
+  height: 80vh;
 }
 
 /* Overlay for better text readability */
@@ -397,8 +399,13 @@ header {
   margin: 0 auto;
   padding: 0 20px;
 }
-.iot-services {
+.iot-services,
+.projects-features {
   background-color: var(--background-color);
+}
+.iot-services {
+  padding-top: 4rem; /* Add space above the How It Works section */
+  padding-bottom: 2rem;
 }
 .projects {
   background-color: var(--background-color);
@@ -577,132 +584,130 @@ header {
   border-color: #e0b00f;
 }
 /* Footer Styles */
+/* Footer Styles */
 .site-footer {
   background-color: var(--background-color);
   color: #fff;
-  padding: 40px 0;
-  font-family: "Arial", sans-serif;
-  font-size: 0.9rem;
-}
-
-.site-footer a {
-  color: #00aaff;
-  text-decoration: none;
-}
-
-.site-footer a:hover {
-  text-decoration: underline;
-}
-
-.footer-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 50px;
-}
-
-.footer-column {
-  max-width: 100%;
-  text-align: left; /* Left-aligns the text within each column */
-}
-
-.footer-column h3 {
-  margin-bottom: 15px;
-  font-size: 1.2rem;
-}
-
-.footer-links,
-.contact-info,
-.legal-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-links li,
-.contact-info li,
-.legal-links li {
-  margin-bottom: 10px;
-}
-
-.newsletter-form {
+  padding: 2rem 0; /* Vertical padding around the footer */
   display: flex;
   flex-direction: column;
-}
-
-.newsletter-form input[type="email"] {
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 0.9rem;
+  align-items: center; /* Center content horizontally */
   width: 100%;
 }
 
-.newsletter-form button {
-  padding: 10px;
-  background-color: #00aaff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.newsletter-form button:hover {
-  background: linear-gradient(135deg, #007bff, #073d78);
-  box-shadow: 0 8px 20px rgba(0, 119, 255, 0.5);
-  transform: translateY(-3px) scale(1.05);
-  font-weight: 700;
-}
-
-.footer-legal {
-  border-top: 1px solid #444;
-  padding-top: 20px;
-  text-align: center;
-  margin-top: 30px;
-}
-
-/* Social Media Links */
-.social-media {
+.footer-container {
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  flex-direction: row;
+  justify-content: space-between; /* Space between sections */
+  flex-wrap: wrap; /* Ensure items wrap on smaller screens */
+  width: 100%; /* Ensure the container takes full width of the footer */
+  max-width: 1200px; /* Optional: Limit the max width of the container */
+  padding: 1rem; /* Padding inside the container */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+  margin: 0 auto; /* Center the container horizontally */
 }
 
-.social-media li {
-  margin: 0;
+/* Logo and Description Styles */
+.footer-logo {
+  flex: 1;
+  max-width: 300px; /* Limit the width of the logo and description */
+  margin-right: 2rem; /* Space between the logo and other sections */
 }
 
-.social-media a {
-  color: #00aaff;
-  text-decoration: none;
+.footer-logo img {
+  width: 100%; /* Responsive logo width */
+  height: auto;
+}
+
+.footer-logo p {
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+/* Footer List Styles */
+ul.list-unstyled {
+  list-style: none; /* Remove default list styling */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+ul.list-unstyled li {
+  margin-bottom: 1rem; /* Space between list items */
+}
+
+ul.list-unstyled a {
+  color: #fff; /* White text color for links */
+  text-decoration: none; /* Remove underline from links */
+  font-size: 1rem; /* Set font size for links */
+  transition: color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+  display: inline-block; /* Ensure the link is treated as a block for better spacing */
+}
+
+ul.list-unstyled a:hover {
+  color: dodgerblue; /* Change text color on hover */
+  text-decoration: underline; /* Add underline on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+/* Footer Heading Styles */
+.footer-services h3,
+.footer-links h3,
+.footer-contact h3 {
   font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #fff; /* Ensure heading color matches text color */
+  text-transform: uppercase; /* Optional: Capitalize headings */
+  letter-spacing: 0.05rem; /* Add spacing between letters for readability */
 }
 
-.social-media i {
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
+.footer-social a {
+  color: #fff;
+  margin-right: 1rem;
+}
+
+.footer-social a:hover {
+  color: #ccc;
+}
+
+.footer-copy {
   text-align: center;
-  border-radius: 50%;
-  background-color: #060332;
+  margin-top: 2rem;
+  font-size: 0.875rem; /* Slightly smaller font size for copyright */
 }
 
-/* Responsive Layout */
+/* Responsive Styles */
 @media (max-width: 768px) {
-  .footer-content {
+  .footer-container {
     flex-direction: column;
     align-items: center;
+  }
+
+  .footer-logo {
+    margin-right: 0;
+    margin-bottom: 1rem; /* Add bottom margin to separate from other sections */
     text-align: center;
   }
 
-  .footer-column {
-    max-width: 100%;
+  .footer-services,
+  .footer-links,
+  .footer-contact {
+    margin: 1rem 0; /* Add vertical margin on smaller screens */
+    text-align: center;
   }
 
-  .social-media {
-    justify-content: center;
+  .footer-social {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-services h3,
+  .footer-links h3,
+  .footer-contact h3 {
+    font-size: 1.25rem;
+  }
+
+  .footer-copy {
+    font-size: 0.75rem; /* Even smaller font size for very small screens */
   }
 }

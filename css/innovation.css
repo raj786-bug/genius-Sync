@@ -396,7 +396,6 @@ header {
     line-height: 2rem;
   }
 }
-
 /* Container */
 .container {
   position: relative;
@@ -405,94 +404,187 @@ header {
   margin: 0 auto;
   padding: 0 20px;
 }
-/* our stories */
-.our-stories {
-  background-color: var(--background-color);
-  padding-top: 3rem; /* Add space above the How It Works section */
-  padding-bottom: 3rem; /* Add space below the How It Works section */
-}
-.value-card {
-  background-color: #fff; /* Card background color */
-  border-color: #ddd; /* Card border color */
-}
 
-.value-card h4 {
-  color: #0f1029; /* Heading color for values */
-}
-#mission-statement {
+.innovation-services,
+.projects-features {
   background-color: var(--background-color);
 }
-#mission-statement .container {
-  min-height: 100vh; /* Ensure container takes full viewport height */
+.innovation-services {
+  padding-top: 4rem; /* Add space above the How It Works section */
+  padding-bottom: 2rem;
+}
+/* Custom styles for the Projects section */
+.projects .card {
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-#mission-statement img {
-  object-fit: cover; /* Cover the container while maintaining aspect ratio */
-  height: 100%; /* Make image height 100% of its parent container */
-}
-#mission-statement h2 {
-  color: #0f1029; /* Dark color for heading */
+.projects .card-img-top {
+  height: 200px;
+  object-fit: cover;
 }
 
-#mission-statement ul li i {
-  color: #0f1029; /* Icon color */
+.projects .card-body {
+  background-color: #f8f9fa;
 }
 
-#mission-statement img {
-  max-height: 100%; /* Ensure image fits within the column */
-  object-fit: cover; /* Cover the space without stretching */
-}
-/* our values */
-#values {
-  background-color: var(--background-color); /* Light background for contrast */
+.projects .card-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
-.value-card {
-  background: #ffffff;
-  border-radius: 0.5rem;
-  padding: 2rem;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+/* Project Section Styles */
+.projects-features {
+  background-color: var(
+    --background-color
+  ); /* Dark background for better contrast */
+  color: #fff;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.card {
+  border: none;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
   display: flex;
   flex-direction: column;
-  height: 100%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for effects */
+  height: 100%; /* Ensures card height is consistent */
 }
 
-.value-card:hover {
-  transform: translateY(-10px); /* Slight lift effect */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+.card-img-top {
+  transition: transform 0.5s ease;
+  border-bottom: 3px solid #f1c40f; /* Yellow border for styling */
 }
 
-.icon-container {
+.card-body {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7); /* Dark overlay for better text readability */
+  color: #fff;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0; /* Ensure the body covers the entire card */
+  transform: translateY(100%);
+  opacity: 0;
+  z-index: 1;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  text-align: center; /* Center text horizontally */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Slightly scale up the card */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.1); /* Zoom in the image slightly on hover */
+}
+
+.card:hover .card-body {
+  transform: translateY(0); /* Slide up the card body on hover */
+  opacity: 1;
+}
+
+.card-body h5 {
   margin-bottom: 1rem;
+  font-size: 1.25rem;
+  transition: color 0.3s ease;
 }
 
-.icon-container i {
-  font-size: 3rem;
-  color: #007bff; /* Primary color for icons */
-  transition: color 0.3s ease; /* Smooth transition for icon color */
+.card-body ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.value-card:hover .icon-container i {
-  color: #0056b3; /* Darker color on hover */
+.card-body ul li {
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
 }
 
-.text-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.card-body:hover h5,
+.card-body:hover ul li {
+  color: #f1c40f; /* Highlight text on hover */
 }
 
-.text-content h4 {
-  margin-top: 1rem;
-  color: #0f1029;
+/* Responsive Adjustments */
+@media (max-width: 767.98px) {
+  .card-body {
+    padding: 15px;
+  }
+}
+/* contact us */
+.contact-us {
+  background: var(
+    --background-color
+  ); /* Gradient background for a dynamic look */
+  color: #fff;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
-.text-content p {
-  color: #6c757d;
-  margin-bottom: 0;
+.contact-item {
+  background: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* Slightly transparent background for contact items */
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  transition: transform 0.3s ease, background 0.3s ease;
+  height: 100%; /* Ensure cards stretch to fill the column */
+}
+
+.contact-item:hover {
+  transform: translateY(-10px); /* Lift effect on hover */
+  background: rgba(
+    255,
+    255,
+    255,
+    0.3
+  ); /* Slightly brighter background on hover */
+}
+
+.contact-item i {
+  color: #007bff; /* Accent color for icons */
+}
+
+.contact-item h5 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.contact-item p a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contact-item p a:hover {
+  text-decoration: underline;
+}
+
+.btn-primary {
+  background-color: #f1c40f;
+  border-color: #f1c40f;
+}
+
+.btn-primary:hover {
+  background-color: #e0b00f;
+  border-color: #e0b00f;
 }
 /* Footer Styles */
 /* Footer Styles */

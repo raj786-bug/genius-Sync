@@ -1,11 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 :root {
   --background-color: #08183c;
-  --spacing-small: 1rem; /* Small spacing */
-  --spacing-medium: 2rem; /* Medium spacing */
-  --spacing-large: 3rem; /* Large spacing */
+  --section-spacing: 2rem;
 }
-
 /* Global Styles */
 html {
   scroll-behavior: smooth;
@@ -17,7 +13,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 16px; /* Base font size for rem calculations */
   overflow-x: hidden;
   background-color: var(--background-color);
@@ -91,7 +87,6 @@ header {
   border-radius: 4px;
   transition: background-color 0.3s ease, transform 0.3s ease;
   margin-right: 1.25rem; /* 20px spacing from the right */
-  text-decoration: none;
 }
 
 .contact-button:hover {
@@ -331,9 +326,8 @@ header {
 }
 
 .hero-content h1 {
-  font-size: 2.5rem; /* 48px */
+  font-size: 3rem; /* 48px */
   font-weight: bold; /* Make the heading bold */
-  word-spacing: 0.5rem;
   margin-bottom: 1.25rem; /* 20px */
   line-height: 3.5rem; /* Adjust line-height for better spacing */
   color: white; /* Set heading color to white */
@@ -341,7 +335,7 @@ header {
 }
 
 .hero-content p {
-  font-size: 1.5rem; /* 28px */
+  font-size: 1.75rem; /* 28px */
   line-height: 2.5rem;
   margin-bottom: 1.25rem; /* 20px */
   color: white; /* Set paragraph color to white */
@@ -358,7 +352,6 @@ header {
   transition: background-color 0.3s ease, transform 0.3s ease;
   margin-left: auto; /* Align to the right */
   margin-right: 1.25rem; /* 20px spacing from the right */
-  text-decoration: none;
 }
 
 .hero-button:hover {
@@ -387,12 +380,12 @@ header {
   }
 
   .hero-content h1 {
-    font-size: 2rem; /* Adjust font size for smaller screens */
-    line-height: 2rem;
+    font-size: 2.5rem; /* Adjust font size for smaller screens */
+    line-height: 3rem;
   }
 
   .hero-content p {
-    font-size: 1rem; /* Adjust paragraph size for smaller screens */
+    font-size: 1.5rem; /* Adjust paragraph size for smaller screens */
     line-height: 2rem;
   }
 }
@@ -405,96 +398,190 @@ header {
   margin: 0 auto;
   padding: 0 20px;
 }
-/* our stories */
-.our-stories {
+
+/* contact us */
+.contact-us {
+  background: var(
+    --background-color
+  ); /* Gradient background for a dynamic look */
+  color: #fff;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.contact-item {
+  background: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* Slightly transparent background for contact items */
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  transition: transform 0.3s ease, background 0.3s ease;
+  height: 100%; /* Ensure cards stretch to fill the column */
+}
+
+.contact-item:hover {
+  transform: translateY(-10px); /* Lift effect on hover */
+  background: rgba(
+    255,
+    255,
+    255,
+    0.3
+  ); /* Slightly brighter background on hover */
+}
+
+.contact-item i {
+  color: #007bff; /* Accent color for icons */
+}
+
+.contact-item h5 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.contact-item p a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contact-item p a:hover {
+  text-decoration: underline;
+}
+
+.btn-primary {
+  background-color: #f1c40f;
+  border-color: #f1c40f;
+}
+
+.btn-primary:hover {
+  background-color: #e0b00f;
+  border-color: #e0b00f;
+}
+/* project guidance */
+.project-guidance {
+  padding: 60px 0;
   background-color: var(--background-color);
-  padding-top: 3rem; /* Add space above the How It Works section */
-  padding-bottom: 3rem; /* Add space below the How It Works section */
-}
-.value-card {
-  background-color: #fff; /* Card background color */
-  border-color: #ddd; /* Card border color */
 }
 
-.value-card h4 {
-  color: #0f1029; /* Heading color for values */
-}
-#mission-statement {
-  background-color: var(--background-color);
-}
-#mission-statement .container {
-  min-height: 100vh; /* Ensure container takes full viewport height */
+.section-title {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 20px;
 }
 
-#mission-statement img {
-  object-fit: cover; /* Cover the container while maintaining aspect ratio */
-  height: 100%; /* Make image height 100% of its parent container */
-}
-#mission-statement h2 {
-  color: #0f1029; /* Dark color for heading */
+.section-description {
+  font-size: 1.25rem;
+  color: white;
+  margin-bottom: 40px;
 }
 
-#mission-statement ul li i {
-  color: #0f1029; /* Icon color */
-}
-
-#mission-statement img {
-  max-height: 100%; /* Ensure image fits within the column */
-  object-fit: cover; /* Cover the space without stretching */
-}
-/* our values */
-#values {
-  background-color: var(--background-color); /* Light background for contrast */
-}
-
-.value-card {
-  background: #ffffff;
-  border-radius: 0.5rem;
-  padding: 2rem;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+.guidance-section {
+  margin-bottom: 60px;
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for effects */
+  align-items: center;
 }
 
-.value-card:hover {
-  transform: translateY(-10px); /* Slight lift effect */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+.guidance-text {
+  padding: 20px;
 }
 
-.icon-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
+.guidance-image {
+  padding: 20px;
 }
 
-.icon-container i {
-  font-size: 3rem;
-  color: #007bff; /* Primary color for icons */
-  transition: color 0.3s ease; /* Smooth transition for icon color */
+.guidance-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
-.value-card:hover .icon-container i {
-  color: #0056b3; /* Darker color on hover */
+.guidance-title {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 15px;
 }
 
-.text-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.guidance-description {
+  font-size: 1rem;
+  color: white;
+  margin-bottom: 20px;
 }
 
-.text-content h4 {
-  margin-top: 1rem;
-  color: #0f1029;
+.guidance-benefits {
+  list-style-type: none;
+  padding: 0;
 }
 
-.text-content p {
-  color: #6c757d;
-  margin-bottom: 0;
+.guidance-benefits li {
+  font-size: 1rem;
+  color: white;
+  margin-bottom: 10px;
 }
-/* Footer Styles */
+.contact-us {
+  background: var(
+    --background-color
+  ); /* Gradient background for a dynamic look */
+  color: #fff;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.contact-item {
+  background: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* Slightly transparent background for contact items */
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  transition: transform 0.3s ease, background 0.3s ease;
+  height: 100%; /* Ensure cards stretch to fill the column */
+}
+
+.contact-item:hover {
+  transform: translateY(-10px); /* Lift effect on hover */
+  background: rgba(
+    255,
+    255,
+    255,
+    0.3
+  ); /* Slightly brighter background on hover */
+}
+
+.contact-item i {
+  color: #007bff; /* Accent color for icons */
+}
+
+.contact-item h5 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.contact-item p a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contact-item p a:hover {
+  text-decoration: underline;
+}
+
+.btn-primary {
+  background-color: #f1c40f;
+  border-color: #f1c40f;
+}
+
+.btn-primary:hover {
+  background-color: #e0b00f;
+  border-color: #e0b00f;
+}
 /* Footer Styles */
 .site-footer {
   background-color: var(--background-color);

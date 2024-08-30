@@ -1,6 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 :root {
   --background-color: #08183c;
+  --spacing-small: 1rem; /* Small spacing */
+  --spacing-medium: 2rem; /* Medium spacing */
+  --spacing-large: 3rem; /* Large spacing */
 }
+
 /* Global Styles */
 html {
   scroll-behavior: smooth;
@@ -12,7 +17,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 16px; /* Base font size for rem calculations */
   overflow-x: hidden;
   background-color: var(--background-color);
@@ -86,6 +91,7 @@ header {
   border-radius: 4px;
   transition: background-color 0.3s ease, transform 0.3s ease;
   margin-right: 1.25rem; /* 20px spacing from the right */
+  text-decoration: none;
 }
 
 .contact-button:hover {
@@ -324,8 +330,9 @@ header {
 }
 
 .hero-content h1 {
-  font-size: 3rem; /* 48px */
+  font-size: 2.5rem; /* 48px */
   font-weight: bold; /* Make the heading bold */
+  word-spacing: 0.5rem;
   margin-bottom: 1.25rem; /* 20px */
   line-height: 3.5rem; /* Adjust line-height for better spacing */
   color: white; /* Set heading color to white */
@@ -333,7 +340,7 @@ header {
 }
 
 .hero-content p {
-  font-size: 1.75rem; /* 28px */
+  font-size: 1.5rem; /* 28px */
   line-height: 2.5rem;
   margin-bottom: 1.25rem; /* 20px */
   color: white; /* Set paragraph color to white */
@@ -350,6 +357,7 @@ header {
   transition: background-color 0.3s ease, transform 0.3s ease;
   margin-left: auto; /* Align to the right */
   margin-right: 1.25rem; /* 20px spacing from the right */
+  text-decoration: none;
 }
 
 .hero-button:hover {
@@ -378,12 +386,12 @@ header {
   }
 
   .hero-content h1 {
-    font-size: 2.5rem; /* Adjust font size for smaller screens */
-    line-height: 3rem;
+    font-size: 2rem; /* Adjust font size for smaller screens */
+    line-height: 2rem;
   }
 
   .hero-content p {
-    font-size: 1.5rem; /* Adjust paragraph size for smaller screens */
+    font-size: 1rem; /* Adjust paragraph size for smaller screens */
     line-height: 2rem;
   }
 }
@@ -391,6 +399,8 @@ header {
 /* our feature */
 .features-section {
   background-color: var(--background-color);
+  padding-top: 3rem; /* Add space above the How It Works section */
+  padding-bottom: 3rem; /* Add space below the How It Works section */
 }
 .feature-item {
   opacity: 0; /* Hidden by default for fade-in effect */
@@ -406,8 +416,8 @@ header {
 .how-it-works {
   background-color: var(--background-color);
   color: #ffffff;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 3rem; /* Add space above the How It Works section */
+  padding-bottom: 3rem; /* Add space below the How It Works section */
 }
 
 .steps {
@@ -572,10 +582,12 @@ header {
   }
 }
 .intro-section {
-  padding: 5rem 2rem; /* Add horizontal padding */
+  /* Add horizontal padding */
   background-color: var(
     --background-color
   ); /* Background color for the section */
+  padding-top: 3rem; /* Space above the Intro section */
+  padding-bottom: 3rem; /* Space below the Intro section */
 }
 
 .intro-section h2 {
@@ -615,7 +627,8 @@ header {
 /* Custom Styles */
 .services {
   background-color: var(--background-color);
-  padding: 60px 0;
+  padding-top: 3rem; /* Space above the Intro section */
+  padding-bottom: 3rem; /* Space below the Intro section */
 }
 
 .service-card {
@@ -704,6 +717,8 @@ header {
 }
 
 .guidance-item {
+  padding-top: 3rem; /* Space above the Intro section */
+  padding-bottom: 3rem; /* Space below the Intro section */
   background-color: #ffffff; /* Default card background color */
   border-radius: 0.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -780,6 +795,8 @@ header {
 /* Swiper Container */
 .testimonials {
   background-color: var(--background-color);
+  padding-top: 3rem; /* Space above the Intro section */
+  padding-bottom: 3rem; /* Space below the Intro section */
 }
 .swiper-container {
   width: 100%;
@@ -865,7 +882,7 @@ header {
 
 /* CTA Heading */
 .cta-heading {
-  font-size: 2em;
+  font-size: 1.5rem;
   margin-bottom: 10px; /* Reduced margin to remove extra space below heading */
   font-weight: bold;
 }
@@ -1002,129 +1019,130 @@ header {
   }
 }
 /* Footer Styles */
+/* Footer Styles */
 .site-footer {
   background-color: var(--background-color);
   color: #fff;
-  padding: 40px 0;
-  font-family: "Arial", sans-serif;
-  font-size: 0.9rem;
-}
-
-.site-footer a {
-  color: #00aaff;
-  text-decoration: none;
-}
-
-.site-footer a:hover {
-  text-decoration: underline;
-}
-
-.footer-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 50px;
-}
-
-.footer-column {
-  max-width: 100%;
-  text-align: left; /* Left-aligns the text within each column */
-}
-
-.footer-column h3 {
-  margin-bottom: 15px;
-  font-size: 1.2rem;
-}
-
-.footer-links,
-.contact-info,
-.legal-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-links li,
-.contact-info li,
-.legal-links li {
-  margin-bottom: 10px;
-}
-
-.newsletter-form {
+  padding: 2rem 0; /* Vertical padding around the footer */
   display: flex;
   flex-direction: column;
-}
-
-.newsletter-form input[type="email"] {
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 0.9rem;
+  align-items: center; /* Center content horizontally */
   width: 100%;
 }
 
-.newsletter-form button {
-  padding: 10px;
-  background-color: #00aaff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.newsletter-form button:hover {
-  background-color: rgba(255, 0, 0, 0.3);
-}
-
-.footer-legal {
-  border-top: 1px solid #444;
-  padding-top: 20px;
-  text-align: center;
-  margin-top: 30px;
-}
-
-/* Social Media Links */
-.social-media {
+.footer-container {
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  flex-direction: row;
+  justify-content: space-between; /* Space between sections */
+  flex-wrap: wrap; /* Ensure items wrap on smaller screens */
+  width: 100%; /* Ensure the container takes full width of the footer */
+  max-width: 1200px; /* Optional: Limit the max width of the container */
+  padding: 1rem; /* Padding inside the container */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+  margin: 0 auto; /* Center the container horizontally */
 }
 
-.social-media li {
-  margin: 0;
+/* Logo and Description Styles */
+.footer-logo {
+  flex: 1;
+  max-width: 300px; /* Limit the width of the logo and description */
+  margin-right: 2rem; /* Space between the logo and other sections */
 }
 
-.social-media a {
-  color: #00aaff;
-  text-decoration: none;
+.footer-logo img {
+  width: 100%; /* Responsive logo width */
+  height: auto;
+}
+
+.footer-logo p {
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+/* Footer List Styles */
+ul.list-unstyled {
+  list-style: none; /* Remove default list styling */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+ul.list-unstyled li {
+  margin-bottom: 1rem; /* Space between list items */
+}
+
+ul.list-unstyled a {
+  color: #fff; /* White text color for links */
+  text-decoration: none; /* Remove underline from links */
+  font-size: 1rem; /* Set font size for links */
+  transition: color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+  display: inline-block; /* Ensure the link is treated as a block for better spacing */
+}
+
+ul.list-unstyled a:hover {
+  color: dodgerblue; /* Change text color on hover */
+  text-decoration: underline; /* Add underline on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+/* Footer Heading Styles */
+.footer-services h3,
+.footer-links h3,
+.footer-contact h3 {
   font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #fff; /* Ensure heading color matches text color */
+  text-transform: uppercase; /* Optional: Capitalize headings */
+  letter-spacing: 0.05rem; /* Add spacing between letters for readability */
 }
 
-.social-media i {
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
+.footer-social a {
+  color: #fff;
+  margin-right: 1rem;
+}
+
+.footer-social a:hover {
+  color: #ccc;
+}
+
+.footer-copy {
   text-align: center;
-  border-radius: 50%;
-  background-color: #060332;
+  margin-top: 2rem;
+  font-size: 0.875rem; /* Slightly smaller font size for copyright */
 }
 
-/* Responsive Layout */
+/* Responsive Styles */
 @media (max-width: 768px) {
-  .footer-content {
+  .footer-container {
     flex-direction: column;
     align-items: center;
+  }
+
+  .footer-logo {
+    margin-right: 0;
+    margin-bottom: 1rem; /* Add bottom margin to separate from other sections */
     text-align: center;
   }
 
-  .footer-column {
-    max-width: 100%;
+  .footer-services,
+  .footer-links,
+  .footer-contact {
+    margin: 1rem 0; /* Add vertical margin on smaller screens */
+    text-align: center;
   }
 
-  .social-media {
-    justify-content: center;
+  .footer-social {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-services h3,
+  .footer-links h3,
+  .footer-contact h3 {
+    font-size: 1.25rem;
+  }
+
+  .footer-copy {
+    font-size: 0.75rem; /* Even smaller font size for very small screens */
   }
 }
