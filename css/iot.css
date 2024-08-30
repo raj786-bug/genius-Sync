@@ -399,39 +399,45 @@ header {
   margin: 0 auto;
   padding: 0 20px;
 }
-/* General styles for IoT and Projects sections */
 .iot-services,
 .projects-features {
   background-color: var(--background-color);
 }
-
 .iot-services {
   padding-top: 4rem; /* Add space above the How It Works section */
   padding-bottom: 2rem;
 }
-
-.projects {
-  background-color: var(--background-color);
+/* Projects Section Styles */
+.projects-features {
+  background-color: var(
+    --background-color
+  ); /* Dark background for better contrast */
+  color: #fff;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
-/* Projects Section Styles */
-.projects .card {
+.card {
   border: none;
-  border-radius: 8px;
+  position: relative;
   overflow: hidden;
   transition: transform 0.5s ease, box-shadow 0.5s ease;
-  position: relative;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensures card height is consistent */
+  cursor: pointer; /* Cursor for clickability */
 }
 
-.projects .card-img-top {
-  height: 200px;
-  object-fit: cover;
+.card-img-top {
   transition: transform 0.5s ease;
   border-bottom: 3px solid #f1c40f; /* Yellow border for styling */
+  height: 200px;
+  object-fit: cover;
 }
 
-.projects .card-body {
+.card-body {
   padding: 20px;
   background: rgba(0, 0, 0, 0.7); /* Dark overlay for better text readability */
   color: #fff;
@@ -446,12 +452,13 @@ header {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  text-align: center; /* Center text horizontally */
+  pointer-events: none; /* Prevent interaction until hovered or clicked */
 }
 
-/* Hover effect for desktop */
+/* Hover Effect */
 .card:hover {
   transform: scale(1.05); /* Slightly scale up the card */
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
@@ -464,9 +471,18 @@ header {
 .card:hover .card-body {
   transform: translateY(0); /* Slide up the card body on hover */
   opacity: 1;
+  pointer-events: auto; /* Allow interaction when hovered */
 }
 
-/* Styles for card content */
+/* Click Functionality */
+.card:focus-within .card-body,
+.card.active .card-body {
+  transform: translateY(0); /* Slide up the card body when clicked */
+  opacity: 1;
+  pointer-events: auto; /* Enable interaction when clicked */
+}
+
+/* Card Body Styles */
 .card-body h5 {
   margin-bottom: 1rem;
   font-size: 1.25rem;
@@ -493,30 +509,14 @@ header {
 @media (max-width: 767.98px) {
   .card-body {
     padding: 15px;
-    transform: translateY(100%); /* Ensure card body is hidden initially */
-    opacity: 0;
-  }
-
-  .card-body.active {
-    transform: translateY(0); /* Slide up the card body on click */
-    opacity: 1;
-  }
-
-  /* Disable hover effects on touch devices */
-  .card:hover {
-    transform: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  }
-
-  .card:hover .card-body,
-  .card:hover .card-img-top {
-    transform: none;
   }
 }
 
-/* Contact Us Section */
+/* contact us */
 .contact-us {
-  background: var(--background-color); /* Background for contact section */
+  background: var(
+    --background-color
+  ); /* Gradient background for a dynamic look */
   color: #fff;
   padding-top: 5rem;
   padding-bottom: 5rem;
@@ -528,10 +528,10 @@ header {
     255,
     255,
     0.2
-  ); /* Semi-transparent background for contact items */
+  ); /* Slightly transparent background for contact items */
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
   transition: transform 0.3s ease, background 0.3s ease;
   height: 100%; /* Ensure cards stretch to fill the column */
 }
@@ -565,7 +565,6 @@ header {
   text-decoration: underline;
 }
 
-/* Custom styles for buttons */
 .btn-primary {
   background-color: #f1c40f;
   border-color: #f1c40f;
@@ -575,7 +574,6 @@ header {
   background-color: #e0b00f;
   border-color: #e0b00f;
 }
-
 /* Footer Styles */
 /* Footer Styles */
 .site-footer {
